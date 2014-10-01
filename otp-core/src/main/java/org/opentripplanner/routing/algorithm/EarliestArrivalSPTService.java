@@ -62,7 +62,7 @@ public class EarliestArrivalSPTService implements SPTService {
             options.setClampInitialWait(60 * 30);
         
         // impose search cutoff
-        final long maxt = (60 * 60 * 2) + options.getClampInitialWait();
+        final long maxt = (60 * 60 * 20) + options.getClampInitialWait();
         options.worstTime = options.dateTime + (options.arriveBy ? -maxt : maxt);
             
         // SPT cache does not look at routing request in SPT to perform lookup, 
