@@ -34,6 +34,7 @@ import org.opentripplanner.graph_builder.services.GraphBuilderWithGtfsDao;
 import org.opentripplanner.graph_builder.services.ned.NEDGridCoverageFactory;
 import org.opentripplanner.openstreetmap.impl.AnyFileBasedOpenStreetMapProviderImpl;
 import org.opentripplanner.openstreetmap.services.OpenStreetMapProvider;
+import org.opentripplanner.routing.algorithm.EarliestArrivalSPTService;
 import org.opentripplanner.routing.algorithm.GenericAStar;
 import org.opentripplanner.routing.core.RoutingRequest;
 import org.opentripplanner.routing.impl.DefaultFareServiceFactory;
@@ -89,7 +90,7 @@ public class OTPConfigurator {
         cpf.bind(RoutingRequest.class);
         cpf.bind(PlanGenerator.class);
         cpf.bind(MetadataService.class);
-        cpf.bind(SPTService.class, new GenericAStar());
+        cpf.bind(SPTService.class, new EarliestArrivalSPTService());
         
         // Choose a PathService to wrap the SPTService, depending on expected maximum path lengths
         if (params.longDistance) {
